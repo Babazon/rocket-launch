@@ -7,6 +7,8 @@ import FastImage from "react-native-fast-image";
 import { RootStackParamList } from "../navigation/navigation";
 import { Launch } from "../services/types";
 import { getAvailableImage } from "../utils/getAvailableImage";
+import Icon from 'react-native-vector-icons/EvilIcons';
+
 
 interface LaunchCardProps {
     launch: Launch;
@@ -40,7 +42,7 @@ export const LaunchCard: React.FC<LaunchCardProps> = ({ launch }) => {
                         {!!launch.details && <Text numberOfLines={launch.failures.length ? 2 : 4} style={styles.text}>{`Details: ${launch.details}`}</Text>}
                         {!!launch.failures.length && <Text numberOfLines={!!launch.details ? 2 : 4} style={styles.text}>{`Fail Reason: ${launchFailures}`}</Text>}
                     </View>
-                    <Text style={{ alignSelf: 'center', fontSize: 20, color: 'white', textAlignVertical: 'top' }}>{`${'>'}`}</Text>
+                    <Icon name="chevron-right" size={30} color="black" />
                 </View>
             </View>
         </TouchableOpacity>
@@ -61,6 +63,7 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
         borderRadius: 16,
+        backgroundColor: '#fff',
     },
     content: {
         flex: 1,
