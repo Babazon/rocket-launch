@@ -1,0 +1,16 @@
+1d9060862f29031417ed34f8c7a38585
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = findLastIndex;
+function findLastIndex(array, callback) {
+  for (var i = array.length - 1; i >= 0; i--) {
+    if (callback(array[i])) {
+      return i;
+    }
+  }
+  return -1;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJmaW5kTGFzdEluZGV4IiwiYXJyYXkiLCJjYWxsYmFjayIsImkiLCJsZW5ndGgiXSwic291cmNlcyI6WyIuLi8uLi8uLi9zcmMvdXRpbHMvZmluZExhc3RJbmRleC50c3giXSwic291cmNlc0NvbnRlbnQiOltudWxsXSwibWFwcGluZ3MiOiI7Ozs7OztBQUFlLFNBQVNBLGFBQWFBLENBQ25DQyxLQUFVLEVBQ1ZDLFFBQStCLEVBQy9CO0VBQ0EsS0FBSyxJQUFJQyxDQUFDLEdBQUdGLEtBQUssQ0FBQ0csTUFBTSxHQUFHLENBQUMsRUFBRUQsQ0FBQyxJQUFJLENBQUMsRUFBRUEsQ0FBQyxFQUFFLEVBQUU7SUFDMUMsSUFBSUQsUUFBUSxDQUFDRCxLQUFLLENBQUNFLENBQUMsQ0FBQyxDQUFDLEVBQUU7TUFDdEIsT0FBT0EsQ0FBQztJQUNWO0VBQ0Y7RUFFQSxPQUFPLENBQUMsQ0FBQztBQUNYIiwiaWdub3JlTGlzdCI6W119

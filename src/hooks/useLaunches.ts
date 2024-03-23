@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { fetchPastLaunchData, fetchUpcomingLaunchData } from "../services/api";
 import { Launch } from "../services/types";
+import { sortLaunches } from "../utils/sortLaunches";
 
 export const useLaunches = () => {
     const [pastLaunches, setPastLaunches] = useState<Launch[]>([])
@@ -14,14 +15,14 @@ export const useLaunches = () => {
         setIsError(false);
 
         fetchPastLaunchData()
-            .then((response: Launch[]) => {
-                if (response) {
-                    setPastLaunches(response)
+            .then((launches: Launch[]) => {
+                // all launches endpoint includes upcoming launches. in order to sort by date descending, we filter them out
+                if (launches) {
+                    setPastLaunches(sortLaunches({ launches, reverse: true }).filter(({ upcoming }) => !upcoming))
                 }
             })
             .catch(error => {
-                setIsError(true);
-                console.log(error);
+                setIsError(!!error);
             })
             .finally(() => setIsLoading(false))
 
@@ -32,14 +33,14 @@ export const useLaunches = () => {
         setIsError(false);
 
         fetchUpcomingLaunchData()
-            .then((response: Launch[]) => {
-                if (response) {
-                    setUpcomingLaunches(response)
+            .then((launches: Launch[]) => {
+                // upcoming launches are sorted ascending by date, so the nearest one is on top
+                if (launches) {
+                    setUpcomingLaunches(sortLaunches({ launches }))
                 }
             })
             .catch(error => {
-                setIsError(true);
-                console.log(error);
+                setIsError(!!error);
             })
             .finally(() => setIsLoading(false))
 

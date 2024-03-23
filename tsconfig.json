@@ -3,7 +3,9 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "Node16",
-    "lib": ["esnext"],
+    "lib": [
+      "esnext"
+    ],
     "jsx": "react-native",
     "esModuleInterop": true,
     "allowJs": true,
@@ -12,7 +14,9 @@
     "moduleResolution": "node16",
     "baseUrl": "./",
     "paths": {
-      "*": ["src/*"]
+      "*": [
+        "src/*"
+      ],
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
@@ -30,6 +34,14 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["src/**/*", "__tests__/*"],
-  "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
+  "include": [
+    "src/**/*",
+    "__tests__/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
 }

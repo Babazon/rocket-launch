@@ -1,0 +1,51 @@
+30dd0eba6a8a86853437d9f271e7231e
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+var _get2 = _interopRequireDefault(require("@babel/runtime/helpers/get"));
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2.default)(o), (0, _possibleConstructorReturn2.default)(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2.default)(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.PinchGesture = void 0;
+var _gesture = require("./gesture");
+function changeEventCalculator(current, previous) {
+  'worklet';
+
+  var changePayload;
+  if (previous === undefined) {
+    changePayload = {
+      scaleChange: current.scale
+    };
+  } else {
+    changePayload = {
+      scaleChange: current.scale / previous.scale
+    };
+  }
+  return Object.assign({}, current, changePayload);
+}
+var PinchGesture = function (_gesture$ContinousBas) {
+  function PinchGesture() {
+    var _this;
+    (0, _classCallCheck2.default)(this, PinchGesture);
+    _this = _callSuper(this, PinchGesture);
+    _this.handlerName = 'PinchGestureHandler';
+    return _this;
+  }
+  (0, _inherits2.default)(PinchGesture, _gesture$ContinousBas);
+  return (0, _createClass2.default)(PinchGesture, [{
+    key: "onChange",
+    value: function onChange(callback) {
+      this.handlers.changeEventCalculator = changeEventCalculator;
+      return (0, _get2.default)((0, _getPrototypeOf2.default)(PinchGesture.prototype), "onChange", this).call(this, callback);
+    }
+  }]);
+}(_gesture.ContinousBaseGesture);
+exports.PinchGesture = PinchGesture;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfZ2VzdHVyZSIsInJlcXVpcmUiLCJjaGFuZ2VFdmVudENhbGN1bGF0b3IiLCJjdXJyZW50IiwicHJldmlvdXMiLCJjaGFuZ2VQYXlsb2FkIiwidW5kZWZpbmVkIiwic2NhbGVDaGFuZ2UiLCJzY2FsZSIsIk9iamVjdCIsImFzc2lnbiIsIlBpbmNoR2VzdHVyZSIsIl9nZXN0dXJlJENvbnRpbm91c0JhcyIsIl90aGlzIiwiX2NsYXNzQ2FsbENoZWNrMiIsImRlZmF1bHQiLCJfY2FsbFN1cGVyIiwiaGFuZGxlck5hbWUiLCJfaW5oZXJpdHMyIiwiX2NyZWF0ZUNsYXNzMiIsImtleSIsInZhbHVlIiwib25DaGFuZ2UiLCJjYWxsYmFjayIsImhhbmRsZXJzIiwiX2dldDIiLCJfZ2V0UHJvdG90eXBlT2YyIiwicHJvdG90eXBlIiwiY2FsbCIsIkNvbnRpbm91c0Jhc2VHZXN0dXJlIl0sInNvdXJjZXMiOlsicGluY2hHZXN0dXJlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IENvbnRpbm91c0Jhc2VHZXN0dXJlIH0gZnJvbSAnLi9nZXN0dXJlJztcbmltcG9ydCB7IFBpbmNoR2VzdHVyZUhhbmRsZXJFdmVudFBheWxvYWQgfSBmcm9tICcuLi9QaW5jaEdlc3R1cmVIYW5kbGVyJztcbmltcG9ydCB7IEdlc3R1cmVVcGRhdGVFdmVudCB9IGZyb20gJy4uL2dlc3R1cmVIYW5kbGVyQ29tbW9uJztcblxuZXhwb3J0IHR5cGUgUGluY2hHZXN0dXJlQ2hhbmdlRXZlbnRQYXlsb2FkID0ge1xuICBzY2FsZUNoYW5nZTogbnVtYmVyO1xufTtcblxuZnVuY3Rpb24gY2hhbmdlRXZlbnRDYWxjdWxhdG9yKFxuICBjdXJyZW50OiBHZXN0dXJlVXBkYXRlRXZlbnQ8UGluY2hHZXN0dXJlSGFuZGxlckV2ZW50UGF5bG9hZD4sXG4gIHByZXZpb3VzPzogR2VzdHVyZVVwZGF0ZUV2ZW50PFBpbmNoR2VzdHVyZUhhbmRsZXJFdmVudFBheWxvYWQ+XG4pIHtcbiAgJ3dvcmtsZXQnO1xuICBsZXQgY2hhbmdlUGF5bG9hZDogUGluY2hHZXN0dXJlQ2hhbmdlRXZlbnRQYXlsb2FkO1xuICBpZiAocHJldmlvdXMgPT09IHVuZGVmaW5lZCkge1xuICAgIGNoYW5nZVBheWxvYWQgPSB7XG4gICAgICBzY2FsZUNoYW5nZTogY3VycmVudC5zY2FsZSxcbiAgICB9O1xuICB9IGVsc2Uge1xuICAgIGNoYW5nZVBheWxvYWQgPSB7XG4gICAgICBzY2FsZUNoYW5nZTogY3VycmVudC5zY2FsZSAvIHByZXZpb3VzLnNjYWxlLFxuICAgIH07XG4gIH1cblxuICByZXR1cm4geyAuLi5jdXJyZW50LCAuLi5jaGFuZ2VQYXlsb2FkIH07XG59XG5cbmV4cG9ydCBjbGFzcyBQaW5jaEdlc3R1cmUgZXh0ZW5kcyBDb250aW5vdXNCYXNlR2VzdHVyZTxcbiAgUGluY2hHZXN0dXJlSGFuZGxlckV2ZW50UGF5bG9hZCxcbiAgUGluY2hHZXN0dXJlQ2hhbmdlRXZlbnRQYXlsb2FkXG4+IHtcbiAgY29uc3RydWN0b3IoKSB7XG4gICAgc3VwZXIoKTtcblxuICAgIHRoaXMuaGFuZGxlck5hbWUgPSAnUGluY2hHZXN0dXJlSGFuZGxlcic7XG4gIH1cblxuICBvbkNoYW5nZShcbiAgICBjYWxsYmFjazogKFxuICAgICAgZXZlbnQ6IEdlc3R1cmVVcGRhdGVFdmVudDxcbiAgICAgICAgUGluY2hHZXN0dXJlSGFuZGxlckV2ZW50UGF5bG9hZCAmIFBpbmNoR2VzdHVyZUNoYW5nZUV2ZW50UGF5bG9hZFxuICAgICAgPlxuICAgICkgPT4gdm9pZFxuICApIHtcbiAgICAvLyBAdHMtaWdub3JlIFRTIGJlaW5nIG92ZXJwcm90ZWN0aXZlLCBQaW5jaEdlc3R1cmVIYW5kbGVyRXZlbnRQYXlsb2FkIGlzIFJlY29yZFxuICAgIHRoaXMuaGFuZGxlcnMuY2hhbmdlRXZlbnRDYWxjdWxhdG9yID0gY2hhbmdlRXZlbnRDYWxjdWxhdG9yO1xuICAgIHJldHVybiBzdXBlci5vbkNoYW5nZShjYWxsYmFjayk7XG4gIH1cbn1cblxuZXhwb3J0IHR5cGUgUGluY2hHZXN0dXJlVHlwZSA9IEluc3RhbmNlVHlwZTx0eXBlb2YgUGluY2hHZXN0dXJlPjtcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsSUFBQUEsUUFBQSxHQUFBQyxPQUFBO0FBUUEsU0FBU0MscUJBQVRBLENBQ0VDLE9BREYsRUFFRUMsUUFGRixFQUdFO0VBQ0E7O0VBQ0EsSUFBSUMsYUFBSjtFQUNBLElBQUlELFFBQVEsS0FBS0UsU0FBakIsRUFBNEI7SUFDMUJELGFBQWEsR0FBRztNQUNkRSxXQUFXLEVBQUVKLE9BQU8sQ0FBQ0s7SUFEUCxDQUFoQjtFQUdELENBSkQsTUFJTztJQUNMSCxhQUFhLEdBQUc7TUFDZEUsV0FBVyxFQUFFSixPQUFPLENBQUNLLEtBQVIsR0FBZ0JKLFFBQVEsQ0FBQ0k7SUFEeEIsQ0FBaEI7RUFHRDtFQUVELE9BQUFDLE1BQUEsQ0FBQUMsTUFBQSxLQUFZUCxPQUFMLEVBQWlCRSxhQUFBO0FBQ3pCO0FBQUEsSUFFWU0sWUFBTixhQUFBQyxxQkFBQTtFQUlMLFNBQUFELGFBQUEsRUFBYztJQUFBLElBQUFFLEtBQUE7SUFBQSxJQUFBQyxnQkFBQSxDQUFBQyxPQUFBLFFBQUFKLFlBQUE7SUFDWkUsS0FBQSxHQUFBRyxVQUFBLE9BQUFMLFlBQUE7SUFFQUUsS0FBQSxDQUFLSSxXQUFMLEdBQW1CLHFCQUFuQjtJQUFBLE9BQUFKLEtBQUE7RUFDRDtFQUFBLElBQUFLLFVBQUEsQ0FBQUgsT0FBQSxFQUFBSixZQUFBLEVBQUFDLHFCQUFBO0VBQUEsV0FBQU8sYUFBQSxDQUFBSixPQUFBLEVBQUFKLFlBQUE7SUFBQVMsR0FBQTtJQUFBQyxLQUFBLEVBRUQsU0FBQUMsU0FDRUMsUUFETSxFQU1OO01BRUEsS0FBS0MsUUFBTCxDQUFjdEIscUJBQWQsR0FBc0NBLHFCQUF0QztNQUNBLFdBQUF1QixLQUFBLENBQUFWLE9BQUEsTUFBQVcsZ0JBQUEsQ0FBQVgsT0FBQSxFQUFBSixZQUFBLENBQUFnQixTQUFBLHFCQUFBQyxJQUFBLE9BQXNCTCxRQUFmO0lBQ1I7RUFBQTtBQUFBLEVBcEIrQnZCLFFBQUEsQ0FBQTZCLG9CQUEzQiIsImlnbm9yZUxpc3QiOltdfQ==

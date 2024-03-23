@@ -36,10 +36,11 @@ export const LaunchCard: React.FC<LaunchCardProps> = ({ launch }) => {
                         resizeMode={FastImage.resizeMode.contain}
                     />
                     <View style={styles.textContainer}>
-                        <Text numberOfLines={1} style={styles.text}>{`Date: ${moment.utc(launch.date_utc).utcOffset(moment().utcOffset()).format('MMMM Do, HH:mm')}`}</Text>
+                        <Text numberOfLines={1} style={styles.text}>{`${moment.utc(launch.date_utc).utcOffset(moment().utcOffset()).format('MMMM Do YYYY, HH:mm')}`}</Text>
                         {!!launch.details && <Text numberOfLines={launch.failures.length ? 2 : 4} style={styles.text}>{`Details: ${launch.details}`}</Text>}
                         {!!launch.failures.length && <Text numberOfLines={!!launch.details ? 2 : 4} style={styles.text}>{`Fail Reason: ${launchFailures}`}</Text>}
                     </View>
+                    <Text style={{ alignSelf: 'center', fontSize: 20, color: 'white', textAlignVertical: 'top' }}>{`${'>'}`}</Text>
                 </View>
             </View>
         </TouchableOpacity>
