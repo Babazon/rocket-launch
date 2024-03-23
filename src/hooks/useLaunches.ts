@@ -1,19 +1,22 @@
-import { useState, useCallback, useEffect } from "react";
-import fetchLaunchData from "../services/api";
+import { useCallback, useEffect, useState } from "react";
+import { fetchPastLaunchData, fetchUpcomingLaunchData } from "../services/api";
 import { Launch } from "../services/types";
 
 export const useLaunches = () => {
-    const [data, setData] = useState<Launch[]>([])
+    const [pastLaunches, setPastLaunches] = useState<Launch[]>([])
+    const [upcomingLaunches, setUpcomingLaunches] = useState<Launch[]>([])
+
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [isError, setIsError] = useState<boolean>(false)
 
-    const fetchData = useCallback(() => {
+    const fetchPastLaunches = useCallback(() => {
         setIsLoading(true);
         setIsError(false);
-        fetchLaunchData()
+
+        fetchPastLaunchData()
             .then((response: Launch[]) => {
                 if (response) {
-                    setData(response)
+                    setPastLaunches(response)
                 }
             })
             .catch(error => {
@@ -21,16 +24,41 @@ export const useLaunches = () => {
                 console.log(error);
             })
             .finally(() => setIsLoading(false))
-    }, [data])
+
+    }, [pastLaunches])
+
+    const fetchUpcomingLaunches = useCallback(() => {
+        setIsLoading(true);
+        setIsError(false);
+
+        fetchUpcomingLaunchData()
+            .then((response: Launch[]) => {
+                if (response) {
+                    setUpcomingLaunches(response)
+                }
+            })
+            .catch(error => {
+                setIsError(true);
+                console.log(error);
+            })
+            .finally(() => setIsLoading(false))
+
+    }, [pastLaunches])
+
+
+    const fetchData = () => {
+        fetchPastLaunches();
+        fetchUpcomingLaunches();
+    }
 
     useEffect(() => {
-        fetchData()
+        fetchData();
     }, [])
 
     return {
         isLoading,
         isError,
-        data,
+        sections: [{ title: 'Upcoming 🚀 Launches', data: upcomingLaunches }, { title: 'Past 🚀 Launches', data: pastLaunches }],
         fetchData
     }
 }
