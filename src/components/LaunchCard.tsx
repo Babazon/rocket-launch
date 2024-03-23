@@ -37,8 +37,8 @@ export const LaunchCard: React.FC<LaunchCardProps> = ({ launch }) => {
                     />
                     <View style={styles.textContainer}>
                         <Text numberOfLines={1} style={styles.text}>{`Date: ${moment.utc(launch.date_utc).utcOffset(moment().utcOffset()).format('MMMM Do, HH:mm')}`}</Text>
-                        {!!launch.details && <Text numberOfLines={2} style={styles.text}>{`Details: ${launch.details}`}</Text>}
-                        {!!launch.failures.length && <Text numberOfLines={2} style={styles.text}>{`Fail Reason: ${launchFailures}`}</Text>}
+                        {!!launch.details && <Text numberOfLines={launch.failures.length ? 2 : 4} style={styles.text}>{`Details: ${launch.details}`}</Text>}
+                        {!!launch.failures.length && <Text numberOfLines={!!launch.details ? 2 : 4} style={styles.text}>{`Fail Reason: ${launchFailures}`}</Text>}
                     </View>
                 </View>
             </View>
