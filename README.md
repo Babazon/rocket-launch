@@ -45,6 +45,15 @@ __mocks__/
 
 The package.json file includes scripts to lint, format, typecheck the project, and run unit tests. 
 
+## Screenshots
+
+### Android
+
+![Screenshot_20240324_160949](https://github.com/Babazon/rocket-launch/assets/9430138/a07e079e-664c-49f1-b98d-74c61607322c)
+![Screenshot_20240324_161047](https://github.com/Babazon/rocket-launch/assets/9430138/431a53f4-4420-4a66-8533-3a28859b9d4d)
+
+### IOS
+
 
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
