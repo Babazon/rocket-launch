@@ -28,4 +28,4 @@ module.exports = {
     '/node_modules/(?!(@react-native|react-native|react-navigation|@react-navigation/stack|@react-navigation/elements)).*/',
     'node_modules/@react-navigation/elements/lib/commonjs/assets/back-icon.png',
   ],
-}
+};

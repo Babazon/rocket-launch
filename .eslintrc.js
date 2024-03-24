@@ -25,4 +25,4 @@ module.exports = {
     'simple-import-sort/exports': 'warn',
     'react-native/no-inline-styles': 'warn',
   },
-}
+};

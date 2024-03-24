@@ -1,14 +1,14 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
-import { WebView } from 'react-native-webview'
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 interface WikipediaWebviewProps {
-  wikipediaUrl: string
+  wikipediaUrl: string;
 }
 
 export const WikipediaWebView: React.FC<WikipediaWebviewProps> = ({ wikipediaUrl }) => {
   if (!wikipediaUrl) {
-    return null
+    return null;
   }
 
   return (
@@ -22,8 +22,8 @@ export const WikipediaWebView: React.FC<WikipediaWebviewProps> = ({ wikipediaUrl
         startInLoadingState={true}
       />
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   webView: {
     flex: 1,
   },
-})
+});

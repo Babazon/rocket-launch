@@ -1,19 +1,19 @@
-import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import FastImage from 'react-native-fast-image'
-import Icon from 'react-native-vector-icons/EvilIcons'
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import FastImage from 'react-native-fast-image';
+import Icon from 'react-native-vector-icons/EvilIcons';
 
-import { useLaunchCard } from '../hooks/useLaunchCard'
-import { Launch } from '../services/types'
-import { formatLaunchDate } from '../utils/formatLaunchDate'
-import { getAvailableImage } from '../utils/getAvailableImage'
+import { useLaunchCard } from '../hooks/useLaunchCard';
+import { Launch } from '../services/types';
+import { formatLaunchDate } from '../utils/formatLaunchDate';
+import { getAvailableImage } from '../utils/getAvailableImage';
 
 interface LaunchCardProps {
-  launch: Launch
+  launch: Launch;
 }
 
 export const LaunchCard: React.FC<LaunchCardProps> = ({ launch }) => {
-  const { handleClickLaunch, conditionalCardStyle, launchFailures } = useLaunchCard(launch)
+  const { handleClickLaunch, conditionalCardStyle, launchFailures } = useLaunchCard(launch);
 
   return (
     <TouchableOpacity style={[styles.card, conditionalCardStyle]} onPress={handleClickLaunch}>
@@ -47,8 +47,8 @@ export const LaunchCard: React.FC<LaunchCardProps> = ({ launch }) => {
         </View>
       </View>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   card: {
@@ -104,4 +104,4 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   icon: { alignSelf: 'center' },
-})
+});

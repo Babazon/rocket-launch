@@ -1,14 +1,14 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
-import { WebView } from 'react-native-webview'
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 interface YouTubeVideoProps {
-  videoId: string
+  videoId: string;
 }
 
 export const YouTubeVideo: React.FC<YouTubeVideoProps> = ({ videoId }) => {
   if (!videoId) {
-    return null
+    return null;
   }
 
   return (
@@ -19,8 +19,8 @@ export const YouTubeVideo: React.FC<YouTubeVideoProps> = ({ videoId }) => {
         source={{ uri: `https://www.youtube.com/embed/${videoId}` }}
       />
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   videoContainer: {
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
   },
-})
+});

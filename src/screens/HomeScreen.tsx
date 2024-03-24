@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef } from 'react';
 import {
   DefaultSectionT,
   RefreshControl,
@@ -8,25 +8,25 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-} from 'react-native'
-import Icon from 'react-native-vector-icons/EvilIcons'
+} from 'react-native';
+import Icon from 'react-native-vector-icons/EvilIcons';
 
-import { LaunchCard } from '../components/LaunchCard'
-import { useLaunches } from '../hooks/useLaunches'
-import { useScrollToTop } from '../hooks/useScrollToTop'
-import { Launch } from '../services/types'
+import { LaunchCard } from '../components/LaunchCard';
+import { useLaunches } from '../hooks/useLaunches';
+import { useScrollToTop } from '../hooks/useScrollToTop';
+import { Launch } from '../services/types';
 
 export const HomeScreen: React.FC = () => {
-  const { isLoading, isError, sections, fetchData } = useLaunches()
+  const { isLoading, isError, sections, fetchData } = useLaunches();
 
-  const sectionListRef = useRef<SectionList>(null)
-  const { showButton, handleScroll, scrollToTop } = useScrollToTop(sectionListRef)
+  const sectionListRef = useRef<SectionList>(null);
+  const { showButton, handleScroll, scrollToTop } = useScrollToTop(sectionListRef);
 
-  const renderLaunch = ({ item }: { item: Launch }) => <LaunchCard launch={item} />
+  const renderLaunch = ({ item }: { item: Launch }) => <LaunchCard launch={item} />;
 
   const renderSectionHeader = (info: { section: SectionListData<Launch, DefaultSectionT> }) => (
     <Text style={styles.sectionHeader}>{info.section.title}</Text>
-  )
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -48,8 +48,8 @@ export const HomeScreen: React.FC = () => {
         </TouchableOpacity>
       )}
     </SafeAreaView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   sectionHeader: {
@@ -90,4 +90,4 @@ const styles = StyleSheet.create({
   icon: { top: -2 },
   sectionList: { marginHorizontal: 16 },
   container: { flex: 1 },
-})
+});

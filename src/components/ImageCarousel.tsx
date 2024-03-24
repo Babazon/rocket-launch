@@ -1,10 +1,10 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
-import FastImage from 'react-native-fast-image'
-import Carousel from 'react-native-snap-carousel'
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import FastImage from 'react-native-fast-image';
+import Carousel from 'react-native-snap-carousel';
 
 interface ImageCarouselProps {
-  images: string[]
+  images: string[];
 }
 
 const MyCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
@@ -12,7 +12,7 @@ const MyCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
     <View style={styles.imageContainer}>
       <FastImage source={{ uri: item }} style={styles.image} />
     </View>
-  )
+  );
 
   return (
     <Carousel
@@ -23,8 +23,8 @@ const MyCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
       layout="default"
       loop
     />
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   imageContainer: {
@@ -39,6 +39,6 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'contain',
   },
-})
+});
 
-export default MyCarousel
+export default MyCarousel;
