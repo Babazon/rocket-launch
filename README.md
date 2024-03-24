@@ -54,6 +54,11 @@ The package.json file includes scripts to lint, format, typecheck the project, a
 
 ### IOS
 
+![simulator_screenshot_0083A262-BD0F-403C-9E0E-B3FBB4FBC897](https://github.com/Babazon/rocket-launch/assets/9430138/2055a94b-0ed5-4ffb-be1d-87f58aa899fc)
+![simulator_screenshot_B9D8324D-DDA9-4977-BBAF-C4B13B8532F2](https://github.com/Babazon/rocket-launch/assets/9430138/24d9c3d3-82f2-46ab-b561-9b677cca22f6)
+![simulator_screenshot_16323FCA-F9DB-4B0B-8EDA-88D3ED0CE2C9](https://github.com/Babazon/rocket-launch/assets/9430138/056b6a53-6c07-463a-a2ba-ce82502f0f27)
+![simulator_screenshot_D7989D04-C55A-4D1B-8DB1-F6DE09379F7E](https://github.com/Babazon/rocket-launch/assets/9430138/b2d33256-d887-44b7-b1f8-7e68d2938657)
+![simulator_screenshot_6DD0B5C8-F923-4C47-9CA5-A6CEC5535472](https://github.com/Babazon/rocket-launch/assets/9430138/6a94903b-3205-46d5-84e4-01cb7404e5f2)
 
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
