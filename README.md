@@ -3,6 +3,7 @@
 This is a simple app to track SpaceX launches. 
 SpaceX public api is used to fetch launch data via axios, which is then rendered in a performant SectionList, and react-navigation allows 
 the user to click a launch card and in order to view its details and video. 
+To prevent having to scroll all the way back up, there is a nifty "scroll to top" button that floats on the bottom right, which is online visible when the user has scrolled down a predefined length. 
 
 The launches are separated into upcoming and past launches, and sorted smartly by date. 
 An intuitive color code was used to determine the launch's success, or lack thereof. Red background is reserved for failed launches whereas 
