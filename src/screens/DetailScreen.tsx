@@ -7,6 +7,7 @@ import { LaunchDetails } from '../components/LaunchDetails';
 import { RocketDetails } from '../components/RocketDetails';
 import { useRocket } from '../hooks/useRocket';
 import { RootStackParamList } from '../navigation/navigation';
+import { theme } from '../constants';
 
 type DetailScreenRouteProp = RouteProp<RootStackParamList, 'Detail'>;
 type DetailScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Detail'>;
@@ -27,10 +28,10 @@ export const DetailScreen: React.FC = () => {
   const conditionalContainerStyle: ViewStyle = useMemo(
     () => ({
       backgroundColor: launch.upcoming
-        ? 'rgba(0,0,0,0.3)'
+        ? theme.colors.upcoming
         : launch.success
-          ? 'rgba(38,194,129,0.4)'
-          : 'rgba(255,0,0,0.4)',
+          ? theme.colors.success
+          : theme.colors.failure,
     }),
     [launch],
   );
@@ -48,8 +49,8 @@ export const DetailScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
-    paddingBottom: 64,
+    padding: theme.spacing.large,
+    paddingBottom: theme.spacing.xxlarge,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',

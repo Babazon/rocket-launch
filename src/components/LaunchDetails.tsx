@@ -6,6 +6,7 @@ import { getAvailableImage } from '../utils/getAvailableImage';
 import { WikipediaWebView } from './WikipediaWebview';
 import { YouTubeVideo } from './YoutubeVideo';
 import { Launch } from '../services/types';
+import { theme } from '../constants';
 
 interface LaunchDetailsProps {
   launch: Launch;
@@ -36,23 +37,23 @@ export const LaunchDetails: React.FC<LaunchDetailsProps> = ({ launch }) => {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 24,
+    fontSize: theme.fontSize.large,
     fontWeight: 'bold',
-    marginBottom: 8,
-    color: 'white',
+    marginBottom: theme.spacing.medium,
+    color: '#FFFFFF',
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: theme.fontSize.medium,
     fontWeight: 'bold',
-    marginTop: 16,
-    marginBottom: 8,
+    marginTop: theme.spacing.large,
+    marginBottom: theme.spacing.medium,
     alignSelf: 'flex-start',
-    color: 'white',
+    color: '#FFFFFF',
   },
   image: {
     height: 300,
     width: 300,
-    marginVertical: 8,
+    marginVertical: theme.spacing.medium,
     alignSelf: 'center',
   },
 });

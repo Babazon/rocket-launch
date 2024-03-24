@@ -6,6 +6,7 @@ import { ViewStyle } from 'react-native';
 
 import { Launch } from '../services/types';
 import { formatLaunchFailures } from '../utils/formatLaunchFailures';
+import { theme } from '../constants';
 
 export const useLaunchCard = (launch: Launch) => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -19,10 +20,10 @@ export const useLaunchCard = (launch: Launch) => {
   const conditionalCardStyle: ViewStyle = useMemo(
     () => ({
       backgroundColor: isUpcomingLaunch
-        ? 'rgba(0,0,0,0.3)'
+        ? theme.colors.upcoming
         : launch.success
-          ? 'rgba(38,194,129,0.4)'
-          : 'rgba(255,0,0,0.4)',
+          ? theme.colors.success
+          : theme.colors.failure,
     }),
     [launch, isUpcomingLaunch],
   );

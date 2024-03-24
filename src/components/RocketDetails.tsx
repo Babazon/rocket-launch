@@ -2,6 +2,7 @@ import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-vector-icons/Icon';
 import ImageCarousel from './ImageCarousel';
 import { Maybe, Rocket } from '../services/types';
+import { theme } from '../constants';
 
 interface RocketDetailsProps {
   rocket: Maybe<Rocket>;
@@ -39,25 +40,25 @@ export const RocketDetails: React.FC<RocketDetailsProps> = ({ rocket, isError, i
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 24,
+    fontSize: theme.fontSize.large,
     fontWeight: 'bold',
-    marginBottom: 8,
-    color: 'white',
+    marginBottom: theme.spacing.medium,
+    color: '#FFFFFF',
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: theme.fontSize.medium,
     fontWeight: 'bold',
-    marginTop: 16,
-    marginBottom: 8,
+    marginTop: theme.spacing.large,
+    marginBottom: theme.spacing.medium,
     alignSelf: 'flex-start',
-    color: 'white',
+    color: '#FFFFFF',
   },
   rocketContainer: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    marginVertical: 16,
+    marginVertical: theme.spacing.large,
   },
   swipeIcon: {
     flexDirection: 'row',

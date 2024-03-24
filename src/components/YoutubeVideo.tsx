@@ -1,3 +1,4 @@
+import { theme } from '../constants';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { WebView } from 'react-native-webview';
@@ -25,7 +26,7 @@ export const YouTubeVideo: React.FC<YouTubeVideoProps> = ({ videoId }) => {
 const styles = StyleSheet.create({
   videoContainer: {
     width: '100%',
-    marginTop: 20,
+    marginTop: theme.spacing.large,
     aspectRatio: 16 / 9, // Aspect ratio of YouTube videos
   },
   video: {

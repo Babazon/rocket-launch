@@ -15,6 +15,7 @@ import { LaunchCard } from '../components/LaunchCard';
 import { useLaunches } from '../hooks/useLaunches';
 import { useScrollToTop } from '../hooks/useScrollToTop';
 import { Launch } from '../services/types';
+import { theme } from '../constants';
 
 export const HomeScreen: React.FC = () => {
   const { isLoading, isError, sections, fetchData } = useLaunches();
@@ -53,11 +54,11 @@ export const HomeScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   sectionHeader: {
-    fontSize: 18,
+    fontSize: theme.fontSize.medium,
     fontWeight: 'bold',
     backgroundColor: '#f0f0f0',
-    paddingVertical: 8,
-    paddingHorizontal: 16,
+    paddingVertical: theme.spacing.medium,
+    paddingHorizontal: theme.spacing.large,
   },
   floatingButton: {
     position: 'absolute',
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     height: 30,
     alignItems: 'center',
     justifyContent: 'flex-end',
-    shadowColor: '#000',
+    shadowColor: '#000000',
     shadowOffset: {
       width: 2,
       height: 10,
@@ -82,12 +83,12 @@ const styles = StyleSheet.create({
     borderColor: 'whitesmoke',
   },
   buttonText: {
-    color: 'white',
+    color: '#FFFFFF',
     fontWeight: 'bold',
-    fontSize: 24,
-    top: 4,
+    fontSize: theme.fontSize.large,
+    top: theme.spacing.small,
   },
-  icon: { top: -2 },
-  sectionList: { marginHorizontal: 16 },
+  icon: { top: -theme.spacing.xsmall },
+  sectionList: { marginHorizontal: theme.spacing.large },
   container: { flex: 1 },
 });
