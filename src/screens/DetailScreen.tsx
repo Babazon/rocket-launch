@@ -7,6 +7,7 @@ import { ScrollView, StyleSheet, Text } from "react-native";
 import { RootStackParamList } from "../navigation/navigation";
 import FastImage from "react-native-fast-image";
 import { getAvailableImage } from "../utils/getAvailableImage";
+import { formatLaunchDate } from "../utils/formatLaunchDate";
 
 
 type DetailScreenRouteProp = RouteProp<RootStackParamList, 'Detail'>;
@@ -35,9 +36,9 @@ export const DetailScreen: React.FC = () => {
                 resizeMode={FastImage.resizeMode.contain}
             />
             <Text style={styles.subtitle}>Launch Details:</Text>
-            <Text>{`Date: ${launch.date_local}`}</Text>
+            <Text>{`Date: ${formatLaunchDate(launch.date_utc)}`}</Text>
             <Text>{`Rocket: ${launch.rocket}`}</Text>
-
+            <Text>{`Details: ${launch.details}`}</Text>
             <WikipediaWebView wikipediaUrl={launch.links.wikipedia ?? ''} />
             <YouTubeVideo videoId={launch.links.youtube_id ?? ''} />
         </ScrollView>
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         fontWeight: "bold",
-        marginBottom: 16,
+        marginBottom: 8,
     },
     subtitle: {
         fontSize: 18,
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
     },
     videoContainer: {
         width: '100%',
-        marginTop: 20,
+        marginTop: 16,
         aspectRatio: 16 / 9, // Aspect ratio of YouTube videos
     },
     video: {

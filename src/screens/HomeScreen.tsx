@@ -3,6 +3,7 @@ import { SectionList, RefreshControl, SafeAreaView, StyleSheet, Text, SectionLis
 import { LaunchCard } from "../components/LaunchCard";
 import { useLaunches } from "../hooks/useLaunches";
 import { Launch } from "../services/types";
+import Icon from "react-native-vector-icons/EvilIcons";
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
@@ -29,6 +30,7 @@ export const HomeScreen: React.FC = () => {
 
     const scrollToTop = () => {
         sectionListRef.current?.scrollToLocation({ sectionIndex: 0, itemIndex: 0 });
+        setShowButton(false)
     };
 
     return (
@@ -47,7 +49,7 @@ export const HomeScreen: React.FC = () => {
             />
             {showButton && (
                 <TouchableOpacity style={styles.floatingButton} onPress={scrollToTop}>
-                    <Text style={styles.buttonText}>^</Text>
+                    <Icon name="chevron-up" size={30} color="black" style={{ top: -2 }} />
                 </TouchableOpacity>
             )}
         </SafeAreaView>
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     },
     floatingButton: {
         position: 'absolute',
-        bottom: 20,
+        bottom: 36,
         right: 20,
         backgroundColor: 'rgba(255,255,255,0.5)',
         borderRadius: 15,

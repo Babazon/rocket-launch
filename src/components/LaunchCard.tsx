@@ -1,13 +1,11 @@
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import moment from "moment";
-import React, { useCallback, useMemo } from "react";
-import { StyleSheet, Text, TouchableOpacity, View, ViewStyle } from "react-native";
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import FastImage from "react-native-fast-image";
-import { RootStackParamList } from "../navigation/navigation";
-import { Launch } from "../services/types";
-import { getAvailableImage } from "../utils/getAvailableImage";
 import Icon from 'react-native-vector-icons/EvilIcons';
+import { useLaunchCard } from "../hooks/useLaunchCard";
+import { Launch } from "../services/types";
+import { formatLaunchDate } from "../utils/formatLaunchDate";
+import { getAvailableImage } from "../utils/getAvailableImage";
 
 
 interface LaunchCardProps {
@@ -15,17 +13,12 @@ interface LaunchCardProps {
 }
 
 export const LaunchCard: React.FC<LaunchCardProps> = ({ launch }) => {
-    const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-    const handleClickLaunch = useCallback(() => {
-        navigation.navigate('Detail', { launch });
-    }, [launch, navigation]);
-
-    const isUpcomingLaunch = useMemo(() => launch.upcoming, [launch])
-
-    const conditionalCardStyle: ViewStyle = useMemo(() => ({ backgroundColor: isUpcomingLaunch ? 'rgba(0,0,0,0.3)' : launch.success ? 'rgba(38,194,129,0.4)' : 'rgba(255,0,0,0.4)' }), [launch]);
-
-    const launchFailures = useMemo(() => launch.failures.map((fail: { reason: string }, index: number) => `${fail.reason}${index < launch.failures.length - 1 ? ',' : ''}`), [launch])
+    const {
+        handleClickLaunch,
+        conditionalCardStyle,
+        launchFailures
+    } = useLaunchCard(launch);
 
     return (
         <TouchableOpacity style={[styles.card, conditionalCardStyle]} onPress={handleClickLaunch}>
@@ -38,11 +31,11 @@ export const LaunchCard: React.FC<LaunchCardProps> = ({ launch }) => {
                         resizeMode={FastImage.resizeMode.contain}
                     />
                     <View style={styles.textContainer}>
-                        <Text numberOfLines={1} style={styles.text}>{`${moment.utc(launch.date_utc).utcOffset(moment().utcOffset()).format('MMMM Do YYYY, HH:mm')}`}</Text>
+                        <Text numberOfLines={1} style={styles.text}>{`${formatLaunchDate(launch.date_utc)}`}</Text>
                         {!!launch.details && <Text numberOfLines={launch.failures.length ? 2 : 4} style={styles.text}>{`Details: ${launch.details}`}</Text>}
                         {!!launch.failures.length && <Text numberOfLines={!!launch.details ? 2 : 4} style={styles.text}>{`Fail Reason: ${launchFailures}`}</Text>}
                     </View>
-                    <Icon name="chevron-right" size={30} color="black" />
+                    <Icon name="chevron-right" size={40} color="white" style={styles.icon} />
                 </View>
             </View>
         </TouchableOpacity>
@@ -101,7 +94,6 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         marginRight: 4,
         flexWrap: 'wrap',
-    }
+    },
+    icon: { alignSelf: 'center' }
 });
-
-export default LaunchCard;
