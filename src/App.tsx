@@ -1,14 +1,9 @@
-import AppNavigator from './navigation/navigation'
 import React from 'react'
 
-
+import AppNavigator from './navigation/navigation'
 
 function App(): React.JSX.Element {
-
-  return (
-    <AppNavigator />
-  )
-
+  return <AppNavigator />
 }
 
 export default App

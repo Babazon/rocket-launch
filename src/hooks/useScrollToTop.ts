@@ -1,25 +1,29 @@
-import { useRef, useState } from "react";
-import { Dimensions, SectionList, NativeSyntheticEvent, NativeScrollEvent } from "react-native";
+import { useState } from 'react'
+import {
+  DefaultSectionT,
+  Dimensions,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  SectionList,
+} from 'react-native'
 
-export const useScrollToTop = () => {
+export const useScrollToTop = (ref: React.RefObject<SectionList<any, DefaultSectionT>>) => {
+  const SCREEN_HEIGHT = Dimensions.get('window').height
 
-    const SCREEN_HEIGHT = Dimensions.get('window').height;
+  const [showButton, setShowButton] = useState<Boolean>(false)
 
-    const sectionListRef = useRef<SectionList>(null);
-    const [showButton, setShowButton] = useState<Boolean>(false);
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const offsetY = event.nativeEvent.contentOffset.y
+    if (offsetY > SCREEN_HEIGHT) {
+      setShowButton(true)
+    } else {
+      setShowButton(false)
+    }
+  }
 
-    const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-        const offsetY = event.nativeEvent.contentOffset.y;
-        if (offsetY > SCREEN_HEIGHT) {
-            setShowButton(true);
-        } else {
-            setShowButton(false);
-        }
-    };
+  const scrollToTop = () => {
+    ref.current?.scrollToLocation({ sectionIndex: 0, itemIndex: 0 })
+  }
 
-    const scrollToTop = () => {
-        sectionListRef.current?.scrollToLocation({ sectionIndex: 0, itemIndex: 0 });
-    };
-
-    return { showButton, handleScroll, scrollToTop, sectionListRef }
+  return { showButton, handleScroll, scrollToTop, ref }
 }

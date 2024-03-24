@@ -1,36 +1,36 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { WebView } from 'react-native-webview';
+import React from 'react'
+import { StyleSheet, View } from 'react-native'
+import { WebView } from 'react-native-webview'
 
 interface WikipediaWebviewProps {
-    wikipediaUrl: string
+  wikipediaUrl: string
 }
 
 export const WikipediaWebView: React.FC<WikipediaWebviewProps> = ({ wikipediaUrl }) => {
-    if (!wikipediaUrl) {
-        return null;
-    }
+  if (!wikipediaUrl) {
+    return null
+  }
 
-    return (
-        <View style={styles.container}>
-            <WebView
-                source={{ uri: wikipediaUrl }}
-                style={styles.webView}
-                originWhitelist={['*']}
-                javaScriptEnabled={true}
-                domStorageEnabled={true}
-                startInLoadingState={true}
-            />
-        </View>
-    );
-};
+  return (
+    <View style={styles.container}>
+      <WebView
+        source={{ uri: wikipediaUrl }}
+        style={styles.webView}
+        originWhitelist={['*']}
+        javaScriptEnabled={true}
+        domStorageEnabled={true}
+        startInLoadingState={true}
+      />
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        width: '100%'
-    },
-    webView: {
-        flex: 1,
-    },
-});
+  container: {
+    flex: 1,
+    width: '100%',
+  },
+  webView: {
+    flex: 1,
+  },
+})

@@ -1,39 +1,39 @@
-import { useCallback, useEffect, useState } from "react";
-import { fetchRocketData } from "../services/api";
-import { Maybe, Rocket } from "../services/types";
+import { useCallback, useEffect, useState } from 'react'
+
+import { fetchRocketData } from '../services/api'
+import { Maybe, Rocket } from '../services/types'
 
 export const useRocket = (rocketId: string) => {
-    const [rocket, setRocket] = useState<Maybe<Rocket>>(undefined)
-    const [isLoading, setIsLoading] = useState<boolean>(false)
-    const [isError, setIsError] = useState<boolean>(false)
+  const [rocket, setRocket] = useState<Maybe<Rocket>>(undefined)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isError, setIsError] = useState<boolean>(false)
 
-    const fetchRocket = useCallback(() => {
-        setIsLoading(true);
-        setIsError(false);
+  const fetchRocket = useCallback(() => {
+    setIsLoading(true)
+    setIsError(false)
 
-        fetchRocketData(rocketId)
-            .then((rocket: Maybe<Rocket>) => {
-                setRocket(rocket)
-            })
-            .catch(error => {
-                setIsError(!!error);
-            })
-            .finally(() => setIsLoading(false))
+    fetchRocketData(rocketId)
+      .then((rocket: Maybe<Rocket>) => {
+        setRocket(rocket)
+      })
+      .catch(error => {
+        setIsError(!!error)
+      })
+      .finally(() => setIsLoading(false))
+  }, [rocketId])
 
-    }, [rocketId])
+  const fetchData = () => {
+    fetchRocket()
+  }
 
-    const fetchData = () => {
-        fetchRocket();
-    }
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-    useEffect(() => {
-        fetchData();
-    }, [])
-
-    return {
-        isLoading,
-        isError,
-        rocket,
-        fetchRocket
-    }
+  return {
+    isLoading,
+    isError,
+    rocket,
+    fetchRocket,
+  }
 }
