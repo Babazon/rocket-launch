@@ -4,6 +4,7 @@ import { RootStackParamList } from "navigation/navigation";
 import { useCallback, useMemo } from "react";
 import { ViewStyle } from "react-native";
 import { Launch } from "../services/types";
+import { formatLaunchFailures } from "../utils/formatLaunchFailures";
 
 export const useLaunchCard = (launch: Launch) => {
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -16,7 +17,7 @@ export const useLaunchCard = (launch: Launch) => {
 
     const conditionalCardStyle: ViewStyle = useMemo(() => ({ backgroundColor: isUpcomingLaunch ? 'rgba(0,0,0,0.3)' : launch.success ? 'rgba(38,194,129,0.4)' : 'rgba(255,0,0,0.4)' }), [launch]);
 
-    const launchFailures = useMemo(() => launch.failures.map((fail: { reason: string }, index: number) => `${fail.reason}${index < launch.failures.length - 1 ? ',' : ''}`), [launch])
+    const launchFailures = useMemo(() => formatLaunchFailures(launch), [launch])
 
     return {
         handleClickLaunch,

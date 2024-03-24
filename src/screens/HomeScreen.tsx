@@ -1,14 +1,15 @@
-import React, { useRef, useState } from "react";
-import { SectionList, RefreshControl, SafeAreaView, StyleSheet, Text, SectionListData, DefaultSectionT, TouchableOpacity, Dimensions, NativeSyntheticEvent, NativeScrollEvent } from "react-native";
+import React from "react";
+import { DefaultSectionT, RefreshControl, SafeAreaView, SectionList, SectionListData, StyleSheet, Text, TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/EvilIcons";
 import { LaunchCard } from "../components/LaunchCard";
 import { useLaunches } from "../hooks/useLaunches";
+import { useScrollToTop } from "../hooks/useScrollToTop";
 import { Launch } from "../services/types";
-import Icon from "react-native-vector-icons/EvilIcons";
 
-const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 export const HomeScreen: React.FC = () => {
     const { isLoading, isError, sections, fetchData } = useLaunches();
+    const { showButton, handleScroll, scrollToTop, sectionListRef } = useScrollToTop()
 
     const renderLaunch = ({ item }: { item: Launch }) => <LaunchCard launch={item} />;
 
@@ -16,30 +17,13 @@ export const HomeScreen: React.FC = () => {
         <Text style={styles.sectionHeader}>{info.section.title}</Text>
     );
 
-    const sectionListRef = useRef<SectionList>(null);
-    const [showButton, setShowButton] = useState<Boolean>(false);
-
-    const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-        const offsetY = event.nativeEvent.contentOffset.y;
-        if (offsetY > SCREEN_HEIGHT) {
-            setShowButton(true);
-        } else {
-            setShowButton(false);
-        }
-    };
-
-    const scrollToTop = () => {
-        sectionListRef.current?.scrollToLocation({ sectionIndex: 0, itemIndex: 0 });
-        setShowButton(false)
-    };
-
     return (
         <SafeAreaView style={{ flex: 1 }}>
             {isError && <Text>An error occurred. Please try to refresh.</Text>}
             <SectionList<Launch>
                 ref={sectionListRef}
                 sections={sections}
-                contentContainerStyle={{ marginHorizontal: 16 }}
+                contentContainerStyle={styles.sectionList}
                 keyExtractor={(launch, index) => launch.id + index}
                 renderItem={renderLaunch}
                 stickySectionHeadersEnabled
@@ -49,7 +33,7 @@ export const HomeScreen: React.FC = () => {
             />
             {showButton && (
                 <TouchableOpacity style={styles.floatingButton} onPress={scrollToTop}>
-                    <Icon name="chevron-up" size={30} color="black" style={{ top: -2 }} />
+                    <Icon name="chevron-up" size={30} color="black" style={styles.icon} />
                 </TouchableOpacity>
             )}
         </SafeAreaView>
@@ -85,13 +69,13 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderWidth: 1,
         borderColor: 'whitesmoke'
-
     },
     buttonText: {
         color: 'white',
         fontWeight: 'bold',
         fontSize: 24,
         top: 4,
-
     },
+    icon: { top: -2 },
+    sectionList: { marginHorizontal: 16 }
 });
