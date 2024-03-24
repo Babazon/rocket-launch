@@ -1,5 +1,5 @@
 import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
-import { Icon } from 'react-native-vector-icons/Icon';
+import Icon from 'react-native-vector-icons/EvilIcons';
 import ImageCarousel from './ImageCarousel';
 import { Maybe, Rocket } from '../services/types';
 import { theme } from '../constants';

@@ -1,3 +1,51 @@
+# Rocket App 
+
+This is a simple app to track SpaceX launches. 
+SpaceX public api is used to fetch launch data via axios, which is then rendered in a performant SectionList, and react-navigation allows 
+the user to click a launch card and in order to view its details and video. 
+
+The launches are separated into upcoming and past launches, and sorted smartly by date. 
+An intuitive color code was used to determine the launch's success, or lack thereof. Red background is reserved for failed launches whereas 
+green is for success. Upcoming launches are colored in grey. 
+
+Two placeholder images are served from /assets folder to populate the launch image when there is none served via api. Small one is for the 
+list and the large for the detail. Furthermore, FastImage was used to cache images so unnecessary renders and fetches aren't made. 
+
+Due to the simplicity of the app and the data, there is no need to use a state management library such as redux, or mobx. 
+
+Logic in view has mostly been moved to custom hooks. Utility functions are well tested. Some constants are defined to avoid repetition. 
+
+There are small "senior" tricks such as conditional number of lines for launch details and failure reason strings in list cards. One can take the whole 4 lines (and get concetaned with ellipses) when there is no need to render the other. Otherwise they both take up 2 number of lines. 
+
+Launch video is served via Webview with Youtube link found in the api response. 
+
+An improvement would be to implement a push notification service for upcoming launches, and a "Live Launch Countdown" page that displays the youtube view, with its live chat. But I could find no such free service. 
+
+Text and styles don't have the best design, but that's an improvement which would take thinking and more time. 
+
+### The projet structure is as follows: 
+
+```
+__tests__/
+__mocks__/
+/src
+  /components
+  /screens
+  /services
+  /assets
+  /hooks
+  /utils
+  /navigation
+  App.tsx
+  constants.ts
+```
+
+### Quality of Life Improvements 
+
+The package.json file includes scripts to lint, format, typecheck the project, and run unit tests. 
+
+
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started

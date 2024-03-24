@@ -19,13 +19,13 @@ export const LaunchDetails: React.FC<LaunchDetailsProps> = ({ launch }) => {
       {launch.success && <Text style={styles.subtitle}>Successful Launch</Text>}
       {!launch.success && <Text style={styles.subtitle}>Failed Launch</Text>}
       {launch.upcoming && <Text style={styles.subtitle}>Upcoming Launch</Text>}
-      <YouTubeVideo videoId={launch.links.youtube_id ?? ''} />
+      <YouTubeVideo videoId={launch.links?.youtube_id ?? ''} />
       <Text style={styles.subtitle}>{`Date: ${formatLaunchDate(launch.date_utc)}`}</Text>
       {launch.details && <Text style={styles.subtitle}>{`Details: ${launch.details}`}</Text>}
       {!!launch.failures.length && (
         <Text style={styles.subtitle}>{`Failure Reasons: ${formatLaunchFailures(launch)}`}</Text>
       )}
-      <WikipediaWebView wikipediaUrl={launch.links.wikipedia ?? ''} />
+      <WikipediaWebView wikipediaUrl={launch.links?.wikipedia ?? ''} />
       <FastImage
         style={styles.image}
         source={getAvailableImage({ launch })}

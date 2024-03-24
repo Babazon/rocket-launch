@@ -8,12 +8,15 @@ export const getAvailableImage = ({
   launch,
   thumbnail,
 }: {
-  launch: Launch;
+  launch: Partial<Launch>;
   thumbnail?: boolean;
 }): Source | ImageRequireSource => {
-  const uri = launch.links.patch.small ?? launch.links.reddit.media ?? launch.links.flickr.small[0];
-  if (!uri) {
-    return thumbnail ? assets.placeholderSmall : assets.placeholderLarge;
+  const uri = launch.links?.patch?.small ?? launch.links?.reddit?.media ?? launch.links?.flickr?.small[0];
+  if (uri) {
+    return { uri };
   }
-  return { uri };
+
+  return thumbnail ? assets.placeholderSmall : assets.placeholderLarge;
+
+
 };

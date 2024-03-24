@@ -25,7 +25,7 @@ module.exports = {
     '^.+\\.(js|jsx)$': 'babel-jest',
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!(@react-native|react-native|react-navigation|@react-navigation/stack|@react-navigation/elements)).*/',
+    '/node_modules/(?!(@react-native|react-native|react-navigation|@react-navigation/stack|@react-navigation/elements|react-native-vector-icons)).*/',
     'node_modules/@react-navigation/elements/lib/commonjs/assets/back-icon.png',
   ],
 };

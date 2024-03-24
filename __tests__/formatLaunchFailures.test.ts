@@ -15,7 +15,7 @@ describe('formatLaunchFailures', () => {
       failures: [{ reason: 'Engine failure' }],
     };
     // @ts-ignore
-    expect(formatLaunchFailures(launchWithSingleFailure)).toEqual('Engine failure.');
+    expect(formatLaunchFailures(launchWithSingleFailure)).toEqual('Engine failure');
   });
 
   it('formats multiple failure reasons correctly', () => {
@@ -28,7 +28,7 @@ describe('formatLaunchFailures', () => {
     };
     // @ts-ignore
     expect(formatLaunchFailures(launchWithMultipleFailures)).toEqual(
-      'Engine failure, Fuel tank leak, Guidance system malfunction.',
+      'Engine failure, Fuel tank leak, Guidance system malfunction',
     );
   });
 

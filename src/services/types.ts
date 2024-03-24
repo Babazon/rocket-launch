@@ -52,7 +52,7 @@ export interface Payload {
 
 export interface Launch {
   fairings: Fairings | null;
-  links: Links;
+  links: Maybe<Links>;
   static_fire_date_utc: string | null;
   static_fire_date_unix: number | null;
   net: boolean;

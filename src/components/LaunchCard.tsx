@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Platform, StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import Icon from 'react-native-vector-icons/EvilIcons';
 
@@ -9,6 +9,19 @@ import { formatLaunchDate } from '../utils/formatLaunchDate';
 import { getAvailableImage } from '../utils/getAvailableImage';
 import { theme } from '../constants';
 
+
+const isIOS = Platform.OS === 'ios';
+
+const shadowStyles: ViewStyle = {
+  shadowColor: '#000000',
+  shadowOffset: {
+    width: 2,
+    height: 20,
+  },
+  shadowOpacity: 0.25,
+  shadowRadius: 3.84,
+  elevation: 5,
+}
 interface LaunchCardProps {
   launch: Launch;
 }
@@ -17,7 +30,7 @@ export const LaunchCard: React.FC<LaunchCardProps> = ({ launch }) => {
   const { handleClickLaunch, conditionalCardStyle, launchFailures } = useLaunchCard(launch);
 
   return (
-    <TouchableOpacity style={[styles.card, conditionalCardStyle]} onPress={handleClickLaunch}>
+    <TouchableOpacity style={[styles.card, conditionalCardStyle, isIOS ? shadowStyles : {}]} onPress={handleClickLaunch}>
       <View style={styles.content}>
         <Text numberOfLines={1} style={styles.title}>{`Mission: ${launch.name}`}</Text>
         <View style={styles.detailsContainer}>
@@ -56,22 +69,12 @@ const styles = StyleSheet.create({
     height: 150,
     width: '100%',
     marginBottom: theme.spacing.large,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 2,
-      height: 20,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
     borderRadius: 16,
     backgroundColor: '#ffffff',
   },
   content: {
     flex: 1,
     padding: theme.spacing.medium,
-    borderRadius: 16,
-    borderStyle: 'solid',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
