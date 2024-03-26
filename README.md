@@ -69,7 +69,7 @@ The package.json file includes scripts for linting, formatting, type-checking, a
 `$ npm run format`
 
 ## Future Improvements
-While the current version offers essential functionality, potential future enhancements include implementing push notification services for upcoming launches and introducing a "Live Launch Countdown" feature displaying live YouTube streams with integrated chat functionality. 
+While the current version offers essential functionality, potential future enhancements include implementing push notification services for upcoming launches and introducing a "Live Launch Countdown" feature displaying live YouTube streams with integrated chat functionality. Had SpaceX api offered paging, or graphql, smaller requests could be made on home screen which would ease the burden on the network usage and calculation costs on the device. Finally, a real designer could design a futuriistic, atom-age style design that provides a real ROCKET APP feeling. 
 
 ## Screenshots
 
