@@ -16,7 +16,7 @@ Rocket Launch Tracker is a user-friendly mobile application designed to keep use
 6. [Screenshots](#screenshots)
    - [Android](#android)
    - [iOS](#ios)
-7. [Getting Started](#getting-started)
+7. [Installing and running the app](#getting-started)
    - [Step 1: Start the Metro Server](#step-1-start-the-metro-server)
    - [Step 2: Start your Application](#step-2-start-your-application)
       - [For Android](#for-android)
